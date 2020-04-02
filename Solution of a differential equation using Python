@@ -1,0 +1,32 @@
+# This code is a solution for the differential equation dS/dt =bS(t^(2/3)/t^{2}+1)
+# Method of Runge Kutta 4th
+import numpy as np
+import pylab as plt
+
+def f(S,t):
+    #return r*N   #Aqui a EDO é dN/dt =Nr
+    return -0.3146*40*S*( (t**(2/3))/(t**2+1) )
+
+
+a=0.0
+b=2.0
+Num = 100 # Para diminuir o erro deve-se aumentar o valor de Num
+h =(b-a)/Num
+S = 10000
+
+
+t_pontos  = np.arange(a,b,h)
+S_pontos =[]
+
+for i in t_pontos:
+    S_pontos.append(S)
+    k1 = h*f(S,i)
+    k2 = h*f(S+0.5*k1, i+0.5*h)
+    k3 = h*f(S+0.5*k2,i+0.5*h)
+    k4 = h*f(S+k3,i+h)
+    S += (k1+2*k2+2*k3+k4)/6
+
+plt.plot(t_pontos,S_pontos,'bo')
+plt.xlabel('t')
+plt.ylabel('S(t)')
+plt.show()
