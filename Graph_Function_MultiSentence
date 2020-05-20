@@ -1,7 +1,7 @@
 import numpy as np               # Import packages numpy ans matplotlib
 import matplotlib.pyplot as plt
 
-def f(x):    # Definition of function mutlsentence f
+def f(x):    # Definition of function multisentence f
     if (x>1):
         return 1
     elif (x<=1.0 and x>=-1.0):
